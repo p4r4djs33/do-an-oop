@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="login/layout :: head">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css" media="all">
+    body{
+      background-colos:line;
+    }
+  </style>
+</head>
+<body>
+<div id="top">
+  <div id ="logo">
+    <img src="/pictures/logo2.png" style="width: 200px ;height: 100px">
+  </div>
+  <div id ="top2">
+    <div id ="menu">
+      <ul>
+
+
+      </ul>
+    </div>
+    <div id = "abc">
+      <div id ="diachi">
+        <li>Địa chỉ: tầng 2 ,số 55 Trần Đại Nghĩa, Đông Tâm ,Hai Bà Trưng, Hà Nội.</li>
+        <li>Số Điên thoại:0365 265 651</li>
+      </div>
+
+      <div id="login">
+        <form action="#" th:action="home" method="post" th:object="${login}">
+          <div id="login1">
+            <label><strong>USER</strong></label>
+            <input type="text" th:field="*{account}">
+            <label><strong>PASS</strong></label>
+            <input type="password" th:field="*{password}">
+          </div>
+          <div id="login2">
+            <button type="submit"><strong>Login</strong></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="main">
+  <div id="a">
+  </div>
+  <div id="main1">
+    <div id="anh1">
+      <img src="/pictures/7.jpg" style="width: 150px ;height: 150px;  border-style:ridge ;border-color: firebrick;">
+    </div>
+    <div id="main11">
+      <div id="anh2">
+        <img src="/pictures/2.jpg" style="width: 150px ;height: 150px; border-style:ridge ;border-color: firebrick;">
+      </div>
+      <div id="anh3">
+        <img src="/pictures/3.jpg" style="width: 150px ;height: 150px; border-style:ridge ;border-color: firebrick">
+      </div>
+    </div>
+  </div>
+  <div id="main2">
+    <div id="anh5">
+      <img src="/pictures/4.jpg" style="width: 150px ;height: 150px; border-style:ridge ;border-color: firebrick">
+    </div>
+    <div id="main21">
+      <div id="anh6">
+        <img src="/pictures/5.jpg" style="width: 150px ;height: 150px; border-style:ridge ;border-color: firebrick">
+      </div>
+      <div id="anh7">
+        <img src="/pictures/6.jpg" style="width: 150px ;height: 150px; border-style:ridge ;border-color: firebrick">
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="footer">
+
+</div>
+
+</body>
+</html>
