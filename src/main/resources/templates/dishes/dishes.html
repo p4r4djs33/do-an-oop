@@ -74,6 +74,7 @@
             </div>
         </div>
         <table id="dishes" border="2" style="border: black">
+            <a th:href="@{/dishes/create}"><button>Thêm món mới </button></a>
             <thead>
             <tr>
                 <th>Tên món</th>
@@ -91,13 +92,13 @@
                 <td th:text="${row.getRecipe()}"></td>
                 <td th:text="${row.getStatus()==0 ? 'Không đủ nguyên liệu' : 'Đủ nguyên liệu'}"></td>
 
-                <td><a th:href="@{/#}">
+                <td><a th:href="@{/dishes/{id}/edit(id=${row.getId()})}">
                     <button>Chỉnh sửa</button>
                 </a></td>
-                <td><a th:href="@{/#}">
+                <td><a th:href="@{/dishes/{id}/delete(id=${row.getId()})}">
                     <button>Xóa món</button>
                 </a></td>
-                <td><a th:href="@{/#}">
+                <td><a th:href="@{/dishes/{id}/view(id=${row.getId()})}">
                     <button>Chi tiết</button>
                 </a></td>
             </tr>
