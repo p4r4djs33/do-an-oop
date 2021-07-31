@@ -47,7 +47,7 @@ public class MainIngredientController {
         redirectAttributes.addFlashAttribute("message", "Created ingredient successfully!");
         return "redirect:/home/main-ingredient";
     }
-    //-----EDIT EMPLOYEE
+    //-----EDIT INGREDIENT
     @GetMapping("/home/main-ingredient/{id}/edit")
     public ModelAndView edit(@PathVariable("id") Long id) {
         Optional<MainIngredient> mainIngredient = mainIngredientService.findById(id);

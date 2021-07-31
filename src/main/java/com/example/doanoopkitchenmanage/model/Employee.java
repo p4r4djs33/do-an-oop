@@ -17,6 +17,9 @@ public class Employee {
     private String shift;
     @Column(name = "salary")
     private String salary;
+    @Column(name = "attendanceDate")
+    private Byte attendanceDate;
+
     @OneToMany(targetEntity = Checklist.class)
     private List<Checklist> checklists;
     @OneToMany(targetEntity = MainIngredient.class)
@@ -27,12 +30,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String name, String numberContact, String shift, String salary, List<Checklist> checklists, List<MainIngredient> mainIngredients, List<Report> reports) {
+    public Employee(Long id, String name, String numberContact, String shift, String salary, Byte attendanceDate,
+                    List<Checklist> checklists, List<MainIngredient> mainIngredients, List<Report> reports) {
         this.id = id;
         this.name = name;
         this.numberContact = numberContact;
         this.shift = shift;
         this.salary = salary;
+        this.attendanceDate = attendanceDate;
         this.checklists = checklists;
         this.mainIngredients = mainIngredients;
         this.reports = reports;
@@ -100,5 +105,13 @@ public class Employee {
 
     public void setReports(List<Report> reports) {
         this.reports = reports;
+    }
+
+    public Byte getAttendanceDate() {
+        return attendanceDate;
+    }
+
+    public void setAttendanceDate(Byte attendanceDate) {
+        this.attendanceDate = attendanceDate;
     }
 }

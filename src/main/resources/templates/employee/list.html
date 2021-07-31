@@ -51,10 +51,13 @@
         <th>Name</th>
         <th>Number Contact</th>
         <th>Shift</th>
-        <th>Salary</th>
+        <th>Số ngày điểm danh</th>
+        <th>Lương tháng này</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
+
+
     </tr>
     </thead>
     <tbody>
@@ -62,16 +65,42 @@
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getNumberContact()}"></td>
         <td th:text="${row.getShift()}"></td>
-        <td th:text="${row.getSalary()}"></td>
-        <td><a th:href="@{/home/employee/{id}/edit(id=${row.getId()})}"> <button>edit</button></a></td>
+        <td th:text="${row.getAttendanceDate()}"></td>
+        <td id="variable" th:with="var = ${row.attendanceDate}*${row.salary}"
+            th:text="${var}"></td>
+        <td><a th:href="@{/home/employee/{id}/edit(id=${row.getId()})}"> <button>Chỉnh sửa</button></a></td>
         <td><a th:href="@{/home/employee/{id}/delete(id=${row.getId()})}"><button>delete</button></a></td>
         <td><a th:href="@{/home/employee/{id}/view(id=${row.getId()})}"><button>view</button></a></td>
+    </tr>
+    </tbody>
+</table>
+<table id="employees2" border="2" style="border: black" hidden>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Number Contact</th>
+        <th>Shift</th>
+        <th>Số ngày điểm danh</th>
+        <th>Lương tháng này</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${employees}">
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getNumberContact()}"></td>
+        <td th:text="${row.getShift()}"></td>
+        <td th:text="${row.getAttendanceDate()}"></td>
+        <td th:with="var = ${row.attendanceDate}*${row.salary}"
+            th:text="${var}"></td>
     </tr>
     </tbody>
 </table>
 <p id="Create">
     <a th:href="@{/home/employee/create}"><button>Thêm nhân viên mới </button></a>
 </p>
+
+<a id="downloadLink" onclick="exportF(this)"><button>In file excel</button></a>
 <footer>
     <div id="footer">
         <div id ="ft1">
@@ -94,5 +123,15 @@
         </div>
     </div>
 </footer>
+<script>
+    function exportF(elem) {
+        var table = document.getElementById("employees2");
+        var html = table.outerHTML;
+        var url = 'data:application/vnd.ms-excel,' + encodeURIComponent(html); // Set your html table into url
+        elem.setAttribute("href", url);
+        elem.setAttribute("download", "export.xls"); // Choose the file name
+        return false;
+    }
+</script>
 </body>
 </html>

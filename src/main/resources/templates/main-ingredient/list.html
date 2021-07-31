@@ -76,7 +76,9 @@
 
         <h1>Danh sách nguyên liệu</h1>
         <p id="Create">
-            <a th:href="@{/home/main-ingredient/create}"><button>Thêm nguyên liệu mới</button></a>
+            <a th:href="@{/home/main-ingredient/create}">
+                <button>Thêm nguyên liệu mới</button>
+            </a>
         </p>
         <th:block th:if="${message}">
             <p th:text="${message}"></p>
@@ -84,6 +86,7 @@
         <table id="ingredients" border="2" style="border: black">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Tên nguyên liệu</th>
                 <th>Số lượng</th>
                 <th>Ngày nhập nguyên liệu</th>
@@ -95,18 +98,45 @@
             </thead>
             <tbody>
             <tr th:each="row,rowStat : ${ingredients}">
+                <td th:text="${row.getId()}"></td>
                 <td th:text="${row.getName()}"></td>
                 <td th:text="${row.getAmount()}"></td>
                 <td th:text="${row.getDateImport()}"></td>
                 <td th:text="${row.getEmployee().getName()}"></td>
-                <td><a th:href="@{/home/main-ingredient/{id}/edit(id=${row.getId()})}"> <button>Chỉnh sửa</button></a></td>
-                <td><a th:href="@{/home/main-ingredient/{id}/delete(id=${row.getId()})}"><button>Xóa</button></a></td>
-                <td><a th:href="@{/home/main-ingredient/{id}/view(id=${row.getId()})}"><button>Xem chi tiết</button></a></td>
+                <td><a th:href="@{/home/main-ingredient/{id}/edit(id=${row.getId()})}">
+                    <button>Chỉnh sửa</button>
+                </a></td>
+                <td><a th:href="@{/home/main-ingredient/{id}/delete(id=${row.getId()})}">
+                    <button>Xóa</button>
+                </a></td>
+                <td><a th:href="@{/home/main-ingredient/{id}/view(id=${row.getId()})}">
+                    <button>Xem chi tiết</button>
+                </a></td>
             </tr>
             </tbody>
         </table>
 
+        <table id="ingredients2" border="2" style="border: black" hidden>
+            <thead>
+            <tr>
+                <th>Tên nguyên liệu</th>
+                <th>Số lượng</th>
+                <th>Ngày nhập nguyên liệu</th>
+                <th>Nhân viên nhập nguyên liệu</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row,rowStat : ${ingredients}">
+                <td th:text="${row.getName()}"></td>
+                <td th:text="${row.getAmount()}"></td>
+                <td th:text="${row.getDateImport()}"></td>
+                <td th:text="${row.getEmployee().getName()}"></td>
+            </tr>
+            </tbody>
+        </table>
 
+        <br>
+        <a id="downloadLink" onclick="exportF(this)"><button>In file excel</button></a>
 
 
         <div id="footer" class="container" style="background-color:aquamarine;height: 80px;">
@@ -136,6 +166,15 @@
         </div>
     </div>
 </div>
-
+<script>
+    function exportF(elem) {
+        var table = document.getElementById("ingredients2");
+        var html = table.outerHTML;
+        var url = 'data:application/vnd.ms-excel,' + encodeURIComponent(html); // Set your html table into url
+        elem.setAttribute("href", url);
+        elem.setAttribute("download", "export.xls"); // Choose the file name
+        return false;
+    }
+</script>
 </body>
 </html>

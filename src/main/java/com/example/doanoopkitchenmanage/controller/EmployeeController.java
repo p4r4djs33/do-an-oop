@@ -35,7 +35,7 @@ public class EmployeeController {
 
     @PostMapping("/home/employee/save")
     public String save(Employee employee, RedirectAttributes redirectAttributes) {
-
+        employee.setAttendanceDate((byte) 0);
         employeeService.save(employee);
         redirectAttributes.addFlashAttribute("message", "Created employee successfully!");
         return "redirect:/home/employee";
@@ -77,4 +77,5 @@ public class EmployeeController {
         model.addAttribute("employee", employee.get());
         return "employee/view";
     }
+
 }

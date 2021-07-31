@@ -1,107 +1,143 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Employee</title>
-  <link th:href="@{/css/homeEmployee.css}" rel="stylesheet" />
-  <script  src="/js/jquery.js" type ="text/javascript"></script>
-  <script  src="/js/homeDish.js" type ="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <link th:href="@{/css/homeEmployee.css}" rel="stylesheet"/>
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/homeDish.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="top">
-  <div id ="logo">
-    <img src="/pictures2/logo2.png" style="width: 220px ;height: 100px">
-  </div>
-  <div id ="top2">
-    <div id ="menu">
-      <ul>
-        <li><a th:href="@{/home}" title="HOME"><strong>HOME</strong></a></li>
-        <li><a th:href="@{/home/main-ingredient}" title="INTRODUCE"><strong>NGUYÊN LIỆU</strong></a></li>
-        <li><a th:href="@{/home/checklist}" title="ABOUT"><strong>BẢNG KIỂM</strong></a></li>
-        <li><a href="#" title="MENU"><strong>MENU</strong></a></li>
-        <li><a href="#" title="ENETS"><strong>TRỢ GIÚP</strong></a></li>
-        <li><a href="#" title="CONTACTS"><strong>LIÊN HỆ</strong></a></li>
-        <li><a th:href="@{/}" title="dangxuat"><strong>ĐĂNG XUẤT</strong></a></li>
-
-
-      </ul>
+    <div id="logo">
+        <img src="/pictures2/logo2.png" style="width: 220px ;height: 100px">
     </div>
-    <div id = "abc">
-      <div id ="tk">
-        <div id ="timkiem">
-          <div class="box">
-            <input type="text" placeholder="" style="">
-            <a><i class="fas fa-search-location"></i></a>
-          </div>
+    <div id="top2">
+        <div id="menu">
+            <ul>
+                <li><a th:href="@{/home}" title="HOME"><strong>HOME</strong></a></li>
+                <li><a th:href="@{/home/main-ingredient}" title="INTRODUCE"><strong>NGUYÊN LIỆU</strong></a></li>
+                <li><a th:href="@{/home/checklist}" title="ABOUT"><strong>BẢNG KIỂM</strong></a></li>
+                <li><a href="#" title="MENU"><strong>MENU</strong></a></li>
+                <li><a href="#" title="ENETS"><strong>TRỢ GIÚP</strong></a></li>
+                <li><a href="#" title="CONTACTS"><strong>LIÊN HỆ</strong></a></li>
+                <li><a th:href="@{/}" title="dangxuat"><strong>ĐĂNG XUẤT</strong></a></li>
 
+
+            </ul>
         </div>
-      </div>
+        <div id="abc">
+            <div id="tk">
+                <div id="timkiem">
+                    <div class="box">
+                        <input type="text" placeholder="" style="">
+                        <a><i class="fas fa-search-location"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <h3>Employee Information</h3>
 <p>
-  <a th:href="@{/home/employee}"><button>Back to customer list</button></a>
+    <a th:href="@{/home/employee}">
+        <button>Back to customer list</button>
+    </a>
 </p>
 <div id="form">
-  <form action="#"  th:object="${employee}">
-    <fieldset>
-      <legend>Employee Information</legend>
-      <tr>
-        <div>
-          <td></td>
-          <label style="margin-right: 80px" >ID</label></td>
-          <td><input type="text" th:field="*{id}" readonly></td>
-        </div>
-      </tr>
-      <tr>
-        <div>
-          <td><label  style="margin-right: 60px">Name</label></td>
-          <td><input type="text" th:field="*{name}" readonly></td>
-        </div>
-      </tr>
-      <tr>
-        <div>
-          <td><label>Number Contact</label></td>
-          <td><input type="text" th:field="*{numberContact}" readonly></td>
-        </div>
-      </tr>
-      <tr>
-        <div>
-          <td><label  style="margin-right: 68px">Shift</label></td>
-          <td><input type="text" th:field="*{shift}" readonly></td>
-        </div>
-      </tr>
-      <tr>
-        <div>
-          <td><label  style="margin-right: 58px">Salary</label></td>
-          <td><input type="text" th:field="*{salary}" readonly></td>
-        </div>
-      </tr>
-    </fieldset>
-  </form>
+    <form action="#" th:object="${employee}">
+        <fieldset>
+            <legend>Employee Information</legend>
+            <tr>
+                <div>
+                    <td></td>
+                    <label style="margin-right: 80px">ID</label></td>
+                    <td><input type="text" th:field="*{id}" readonly></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td><label style="margin-right: 60px">Name</label></td>
+                    <td><input type="text" th:field="*{name}" readonly></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td><label>Number Contact</label></td>
+                    <td><input type="text" th:field="*{numberContact}" readonly></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td><label style="margin-right: 68px">Shift</label></td>
+                    <td><input type="text" th:field="*{shift}" readonly></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td><label style="margin-right: 32px">Điểm danh</label></td>
+                    <td><input type="text" id="attendanceDate" th:field="*{attendanceDate}" th:value="${employee.attendanceDate}" readonly></td>
+                </div>
+            </tr>
+            <tr>
+                <div>
+                    <td><label style="margin-right: 58px">Salary</label></td>
+                    <td><input type="text" th:field="*{salary}" readonly></td>
+                </div>
+            </tr>
+        </fieldset>
+    </form>
 </div>
+<button onclick="return createCheckbox()">Điểm danh</button>
+<div id="muster" style="height:200px ;overflow-y: scroll">
+</div>
+
+
 <footer>
-  <div id="footer">
-    <div id ="ft1">
-      <ul>
-        <h2>Giới thiệu</h2>
-        <a> Hệ thông cửa hàng</a>
-        <a> Khuyến mại</a>
-        <a> Tuyển dụng</a>
-        <a> Liên hệ</a>
-      </ul>
+    <div id="footer">
+        <div id="ft1">
+            <ul>
+                <h2>Giới thiệu</h2>
+                <a> Hệ thông cửa hàng</a>
+                <a> Khuyến mại</a>
+                <a> Tuyển dụng</a>
+                <a> Liên hệ</a>
+            </ul>
+        </div>
+        <div id="ft2">
+            <img src="/pictures2/face.png" style="width: 20px; height: 20px">
+            <img src="/pictures2/ims.png" style="width: 20px; height: 20px">
+            <img src="/pictures2/tw.jpg" style="width: 20px; height: 20px">
+            <img src="/pictures2/za.webp" style="width: 20px; height: 20px">
+            <img src="/pictures2/you.png" style="width: 20px; height: 20px">
+            <img src="/pictures2/gg.png" style="width: 20px; height: 20px">
+            <img src="/pictures2/ggm.png" style="width: 20px; height: 20px">
+        </div>
     </div>
-    <div id ="ft2">
-      <img src="/pictures2/face.png" style="width: 20px; height: 20px">
-      <img src="/pictures2/ims.png" style="width: 20px; height: 20px">
-      <img src="/pictures2/tw.jpg" style="width: 20px; height: 20px">
-      <img src="/pictures2/za.webp" style="width: 20px; height: 20px">
-      <img src="/pictures2/you.png" style="width: 20px; height: 20px">
-      <img src="/pictures2/gg.png" style="width: 20px; height: 20px">
-      <img src="/pictures2/ggm.png" style="width: 20px; height: 20px">
-    </div>
-  </div>
 </footer>
+
+<script>
+    $(document).ready(function () {
+        let attendanceDate = $('#attendanceDate').val();
+        console.log(attendanceDate);
+        for (let i = 1; i <= attendanceDate; i++) {
+            $('#muster').append(`<label for="${i}">Ngày ${i}</label>`)
+                .append(`<input type="checkbox" id="${i}" name="${i}" value="${i}" checked>`)
+                .append(`<br>`);
+        }
+    });
+
+    function createCheckbox() {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        console.log('=====' + dd);
+
+        $('#muster').append(`<label for="${dd}">Ngày ${dd}/${mm}</label>`)
+            .append(`<input type="checkbox" id="date1" name="date1" value="${dd}" checked>`)
+            .append(`<br>`);
+    }
+</script>
 </body>
 </html>

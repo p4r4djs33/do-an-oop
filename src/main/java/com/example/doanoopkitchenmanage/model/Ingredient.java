@@ -9,8 +9,9 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Long amountBegin;
-    private Long amountEnd;
+    private String amountBegin;
+    private String amountEnd;
+    private String date;
     @ManyToOne
     @JoinColumn(name = "checklist_id")
     private Checklist checklist;
@@ -22,11 +23,12 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient(Long id, String name, Long amountBegin, Long amountEnd, Checklist checklist, Report report) {
+    public Ingredient(Long id, String name, String amountBegin, String amountEnd, String date, Checklist checklist, Report report) {
         this.id = id;
         this.name = name;
         this.amountBegin = amountBegin;
         this.amountEnd = amountEnd;
+        this.date = date;
         this.checklist = checklist;
         this.report = report;
     }
@@ -47,19 +49,19 @@ public class Ingredient {
         this.name = name;
     }
 
-    public Long getAmountBegin() {
+    public String getAmountBegin() {
         return amountBegin;
     }
 
-    public void setAmountBegin(Long amountBegin) {
+    public void setAmountBegin(String amountBegin) {
         this.amountBegin = amountBegin;
     }
 
-    public Long getAmountEnd() {
+    public String getAmountEnd() {
         return amountEnd;
     }
 
-    public void setAmountEnd(Long amountEnd) {
+    public void setAmountEnd(String amountEnd) {
         this.amountEnd = amountEnd;
     }
 
@@ -77,5 +79,13 @@ public class Ingredient {
 
     public void setReport(Report report) {
         this.report = report;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

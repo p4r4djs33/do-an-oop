@@ -7,6 +7,7 @@ import com.example.doanoopkitchenmanage.service.dish.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +25,11 @@ public class DishController {
 
 
     @GetMapping("/dishes")
-    public ModelAndView dishes(Pageable pageable) {
+    public ModelAndView dishes(@PageableDefault(size = 5) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("/dishes/dishes");
         Page<Dish> listDish = dishService.findAll(pageable);
         modelAndView.addObject("dishes", listDish);
+        modelAndView.addObject("dishes2", dishService.findAll());
         return modelAndView;
     }
 
